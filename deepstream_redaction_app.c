@@ -373,13 +373,54 @@ contact: Shuo Wang (shuow@nvidia.com)");
     		
   }
 
-  /* Check all components */
+  /* Check all components individually*/
+  if (!pipeline)
+  {
+    g_printerr ("The pipeline creation has issues. Exiting.\n");
+    return -1;  
+  }
+  if(!source)
+  {
+    g_printerr ("The source creation has issues. Exiting.\n");
+    return -1;  
+  }
+  if(!video_full_processing_bin)
+  {
+    g_printerr ("The video processing creation has issues. Exiting.\n");
+    return -1;
+  }
+  if(!queue_pgie)
+  {
+    g_printerr ("The queue pgie creation has issues. Exiting.\n");
+    return -1;
+  }
+  if(!pgie)
+  {
+    g_printerr ("The pgie creation has issues. Exiting.\n");
+    return -1;
+  }
+  if(!nvvidconv_osd)
+  {
+    g_printerr ("The nvvidconv_osd creation has issues. Exiting.\n");
+    return -1;
+  }
+  if(!osd)
+  {
+    g_printerr ("The osd creation has issues. Exiting.\n");
+    return -1;
+  }
+  if(!sink)
+  {
+    g_printerr ("The sink creation has issues. Exiting.\n");
+    return -1;
+  }
+  /*
   if (!pipeline || !source || !video_full_processing_bin
       || !queue_pgie || !pgie || !nvvidconv_osd
       || !osd || !sink) {
     g_printerr ("One element could not be created. Exiting.\n");
     return -1;
-  }
+  }*/
 
   /* we add a message handler */
   bus = gst_pipeline_get_bus (GST_PIPELINE (pipeline));
